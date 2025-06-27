@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Our Fairytale Journey ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --blush: #FFB7C5;
+            --dusty-rose: #E8A87C;
+            --lavender: #D4BEDF;
+            --sage: #A2C4B2;
+            --ivory: #FFF9F0;
+            --charcoal: #3D3B40;
+            --gold: #D4AF37;
+            --shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Watercolor Splash Background */
+        .bg-art {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url('https://i.imgur.com/JQ9qy0T.png') top -100px left -100px/300px no-repeat,
+                url('https://i.imgur.com/mVQfz3Y.png') bottom -150px right -150px/400px no-repeat;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Floral Design */
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--blush), var(--lavender));
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+            animation: gradientShift 12s ease infinite alternate;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/ZNwXq0A.png') center/cover no-repeat;
+            opacity: 0.15;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: white;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.7;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: white;
+            max-width: 100%;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            padding: 0 15px;
+        }
+
+        /* Floating Elements Animation */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(calc(-50vw + 100px), 100vh) rotate(360deg); }
+        }
+
+        /* Day Navigation - Jewel Tabs */
+        .days-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 5;
+            padding: 0 10px;
+        }
+
+        .day-tab {
+            padding: 12px 20px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-family: 'Playfair Display', serif;
+            flex: 1;
+            min-width: 120px;
+            max-width: 200px;
+            text-align: center;
+        }
+
+        .day-tab::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--lavender), var(--dusty-rose));
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .day-tab.active {
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .day-tab.active::before {
+            opacity: 1;
+        }
+
+        .day-tab:hover:not(.active) {
+            transform: translateY(-3px);
+        }
+
+        /* Content */
+        .itinerary-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .itinerary-content.active {
+            display: block;
+        }
+
+        .day-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .day-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            display: inline-block;
+            position: relative;
+        }
+
+        .day-title h2::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--blush), var(--sage));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Timeline - Elegant Design */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--blush), var(--sage));
+            left: 20px;
+            top: 0;
+            border-radius: 4px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--blush);
+            border-radius: 50%;
+            left: 11px;
+            top: 8px;
+            z-index: 2;
+            box-shadow: 0 0 0 4px white;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item:hover::before {
+            border-color: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--blush), var(--sage));
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .time {
+            font-weight: 600;
+            color: var(--dusty-rose);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .opening-hours {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .activity {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+        }
+
+        .description {
+            color: var(--charcoal);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .map-btn, .tiktok-btn, .download-btn {
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            font-size: 0.9rem;
+        }
+
+        .map-btn {
+            background: rgba(162, 196, 178, 0.2);
+            color: var(--sage);
+        }
+
+        .map-btn:hover {
+            background: rgba(162, 196, 178, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .tiktok-btn {
+            background: rgba(255, 183, 197, 0.2);
+            color: var(--blush);
+            border: none;
+            cursor: pointer;
+        }
+
+        .tiktok-btn:hover {
+            background: rgba(255, 183, 197, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .download-btn {
+            background: rgba(212, 190, 223, 0.2);
+            color: var(--lavender);
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: rgba(212, 190, 223, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(212, 190, 223, 0.3);
+            color: var(--charcoal);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .image-grid img {
+            width: 100%;
+            border-radius: 15px;
+            height: 180px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Download Options Modal */
+        .download-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .download-modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .download-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .download-option {
+            padding: 15px;
+            background-color: rgba(162, 196, 178, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .download-option:hover {
+            background-color: rgba(162, 196, 178, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .close-download {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--charcoal);
+        }
+
+        /* Footer - Floral Design */
+        footer {
+            text-align: center;
+            padding: 80px 20px 60px;
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--sage), var(--lavender));
+            color: white;
+            position: relative;
+            clip-path: polygon(0 10%, 50% 0, 100% 10%, 100% 100%, 0 100%);
+            animation: gradientShift 12s ease infinite alternate-reverse;
+            background-size: 200% 200%;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/ZNwXq0A.png') center/cover no-repeat;
+            opacity: 0.15;
+        }
+
+        .love-note {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .love-note::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 2px;
+            background: white;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.5;
+        }
+
+        .footer-text {
+            max-width: 100%;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+
+        /* Floating Heart Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--blush), var(--dusty-rose));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 183, 197, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fab:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 40px rgba(255, 183, 197, 0.6);
+        }
+
+        /* Heart Pulse Animation */
+        .heart-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            animation: pulse 2s ease-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Suggestion Form Styles */
+        .suggestion-form {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 40px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .suggestion-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .suggestion-title::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to right, var(--blush), var(--sage));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            resize: vertical;
+            min-height: 120px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--lavender);
+            box-shadow: 0 0 0 3px rgba(212, 190, 223, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--sage), var(--lavender));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 400px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .day-tab {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+            
+            .day-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .love-note {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline {
+                padding-left: 50px;
+            }
+            
+            .timeline::before {
+                left: 25px;
+            }
+            
+            .timeline-item::before {
+                left: 16px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            header {
+                padding: 100px 20px 80px;
+                margin-bottom: 60px;
+            }
+            
+            h1 {
+                font-size: 3.2rem;
+                margin-bottom: 20px;
+            }
+            
+            h1::after {
+                width: 100px;
+                height: 4px;
+                bottom: -15px;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+                max-width: 700px;
+            }
+            
+            .days-container {
+                gap: 15px;
+                margin-bottom: 60px;
+            }
+            
+            .day-tab {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .day-title {
+                margin-bottom: 60px;
+            }
+            
+            .day-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .day-title h2::after {
+                width: 150px;
+                bottom: -20px;
+            }
+            
+            .timeline {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 30px;
+                width: 4px;
+            }
+            
+            .timeline-item {
+                margin-bottom: 50px;
+                padding-left: 40px;
+            }
+            
+            .timeline-item::before {
+                width: 25px;
+                height: 25px;
+                left: 18px;
+                top: 10px;
+                border-width: 5px;
+                box-shadow: 0 0 0 5px white;
+            }
+            
+            .timeline-content {
+                padding: 30px;
+            }
+            
+            .activity {
+                font-size: 1.6rem;
+            }
+            
+            footer {
+                padding: 100px 20px 80px;
+                margin-top: 100px;
+            }
+            
+            .love-note {
+                font-size: 2.5rem;
+            }
+            
+            .footer-text {
+                font-size: 1.1rem;
+                max-width: 700px;
+            }
+            
+            .fab {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .suggestion-form {
+                padding: 30px;
+            }
+
+            .suggestion-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            h1 {
+                font-size: 3.8rem;
+            }
+            
+            .day-title h2 {
+                font-size: 3rem;
+            }
+            
+            .timeline {
+                padding-left: 80px;
+            }
+            
+            .timeline::before {
+                left: 40px;
+            }
+            
+            .timeline-item::before {
+                left: 28px;
+            }
+            
+            .timeline-content {
+                padding: 40px;
+            }
+            
+            .activity {
+                font-size: 1.8rem;
+            }
+            
+            .love-note {
+                font-size: 2.8rem;
+            }
+            
+            .fab {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+                bottom: 40px;
+                right: 40px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            h1 {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-art"></div>
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <!-- Download Options Modal -->
+    <div class="download-modal" id="downloadModal">
+        <div class="download-modal-content">
+            <span class="close-download" id="closeDownload">&times;</span>
+            <h3>Download Itinerary</h3>
+            <p>Choose your preferred format:</p>
+            <div class="download-options">
+                <div class="download-option" id="downloadExcel">
+                    <i class="fas fa-file-excel"></i> Excel Format (.xlsx)
+                </div>
+                <div class="download-option" id="downloadSpreadsheet">
+                    <i class="fas fa-file-csv"></i> Spreadsheet (.csv)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>Our Fairytale Journey</h1>
+            <p class="subtitle">Three magical days crafted with all my love for you</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="days-container">
+            <div class="day-tab active" data-day="day1">Day 1: Beginnings</div>
+            <div class="day-tab" data-day="day2">Day 2: Adventures</div>
+            <div class="day-tab" data-day="day3">Day 3: Forever</div>
+        </div>
+
+        <!-- Day 1 -->
+        <div id="day1" class="itinerary-content active">
+            <div class="day-title">
+                <h2>When Our Story Begins</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="time"><i class="far fa-clock"></i> 60:47 AM</div>
+                        <div class="activity">Lempuyangan Station</div>
+                        <div class="description">I have arrived at Lempuyangan Station.</div>
+                        
+                        <div class="action-buttons">
+                            <a href="https://maps.app.goo.gl/iC6uyfyoiLsUeJnp6" target="_blank" class="map-btn">
+                                <i class="fas fa-map-marker-alt"></i> View on Map
+                            </a>
+                            <a href="https://www.tiktok.com/@omahtukangan493/video/7300521730135674117?q=stasiun%20lempuyangan&t=1751006371871" target="_blank" class="tiktok-btn">
+                                View Reviews
+                            </a>
+                            <button class="download-btn" id="downloadBtn">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <div class="tags">
+                            <span class="tag">Station</span>
+                        </div>
+                        
+                        <div class="image-grid">
+                            <img src="https://i.pinimg.com/736x/01/f5/8d/01f58d4bc889812b83a11615846dfd77.jpg" alt="Station" class="gallery-img">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="time"><i class="far fa-clock"></i> 06:50 AM</div>
+                        <div class="activity">RedDoorz @ Mantrijeron 2</div>
+                        <div class="description">I am heading to the hotel to drop off my bag.</div>
+                        
+                        <div class="action-buttons">
+                            <a href="https://maps.app.goo.gl/zfNVYUTudScWvof89" target="_blank" class="map-btn">
+                                <i class="fas fa-map-marker-alt"></i> View on Map
+                            </a>
+                            <a href="https://www.tiktok.com/@pintuhotelmurah/video/7470021007240137990?q=RedDoorz%20%40%20Mantrijeron%202&t=1751006593974" target="_blank" class="tiktok-btn">
+                                View Reviews
+                            </a>
+                            <button class="download-btn" id="downloadBtn">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <div class="tags">
+                            <span class="tag">Hotel</span>
+                        </div>
+
+                        <div class="image-grid">
+                            <img src="https://images.reddoorz.com/photos/382512/desktop_hotel_gallery_large_900x600_DSCF4658.webp" alt="Hotel" class="gallery-img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="time"><i class="far fa-clock"></i> 07:00 AM</div>
+                        <div class="activity">Pasar Ngasem</div>
+                        <div class="description">We are going to Ngasem Market for breakfast and to buy snacks.</div>
+                        
+                        <div class="action-buttons">
+                            <a href="https://maps.app.goo.gl/NLkQDrkot5d38wdm6" target="_blank" class="map-btn">
+                                <i class="fas fa-map-marker-alt"></i> View on Map
+                            </a>
+                            <a href="https://www.tiktok.com/@zoomeeku/video/7519763934887431431?q=pasar%20ngasem&t=1751006775409" target="_blank" class="tiktok-btn">
+                                View Reviews
+                            </a>
+                            <button class="download-btn" id="downloadBtn">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <div class="tags">
+                            <span class="tag">Market</span>
+                        </div>
+
+                        <div class="image-grid">
+                            <img src="https://i.pinimg.com/736x/39/50/8d/39508dcc73015c5f5b88895267716ddb.jpg" alt="Market" class="gallery-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggestion Form for Day 1 -->
+            <div class="suggestion-form">
+                <h3 class="suggestion-title">Your Suggestions for Day 1</h3>
+                <form id="suggestionFormDay1">
+                    <div class="form-group">
+                        <label for="suggestionDay1">What would you like to add or change for this day?</label>
+                        <textarea id="suggestionDay1" placeholder="Your suggestions here..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send to WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div id="day2" class="itinerary-content">
+            <div class="day-title">
+                <h2>Adventures Together</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="time"><i class="far fa-clock"></i> 9:00 AM</div>
+                        <div class="opening-hours"><i class="fas fa-door-open"></i> Open 8:00 AM - 5:00 PM</div>
+                        <div class="activity">Hot Air Balloon Sunrise</div>
+                        <div class="description">We'll float above the vineyards as the sun rises, with a champagne breakfast served in the basket. The pilot will capture our photos with the mountains in the background.</div>
+                        
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com" target="_blank" class="map-btn">
+                                <i class="fas fa-map-marker-alt"></i> View on Map
+                            </a>
+                            <a href="https://www.tiktok.com/search?q=Hot%20Air%20Balloon%20Sunrise%20review" target="_blank" class="tiktok-btn">
+                                <i class="fab fa-tiktok"></i> View Reviews
+                            </a>
+                            <button class="download-btn" id="downloadBtn">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <div class="tags">
+                            <span class="tag">Unique</span>
+                            <span class="tag">Sunrise</span>
+                            <span class="tag">Photoshoot</span>
+                        </div>
+                        
+                        <div class="image-grid">
+                            <img src="https://source.unsplash.com/random/1200x800/?hot,air,balloon" alt="Hot Air Balloon" class="gallery-img">
+                            <img src="https://source.unsplash.com/random/1200x800/?champagne,breakfast" alt="Balloon Breakfast" class="gallery-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggestion Form for Day 2 -->
+            <div class="suggestion-form">
+                <h3 class="suggestion-title">Your Suggestions for Day 2</h3>
+                <form id="suggestionFormDay2">
+                    <div class="form-group">
+                        <label for="suggestionDay2">What would you like to add or change for this day?</label>
+                        <textarea id="suggestionDay2" placeholder="Your suggestions here..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send to WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div id="day3" class="itinerary-content">
+            <div class="day-title">
+                <h2>Memories to Last Forever</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="time"><i class="far fa-clock"></i> 10:00 AM</div>
+                        <div class="opening-hours"><i class="fas fa-door-open"></i> Open 9:00 AM - 8:00 PM</div>
+                        <div class="activity">Couple's Crystal Spa</div>
+                        <div class="description">Two hours of side-by-side treatments in a crystal therapy room, followed by a milk-and-rose petal bath with champagne and chocolate-covered strawberries.</div>
+                        
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com" target="_blank" class="map-btn">
+                                <i class="fas fa-map-marker-alt"></i> View on Map
+                            </a>
+                            <a href="https://www.tiktok.com/search?q=Couple's%20Crystal%20Spa%20review" target="_blank" class="tiktok-btn">
+                                <i class="fab fa-tiktok"></i> View Reviews
+                            </a>
+                            <button class="download-btn" id="downloadBtn">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <div class="tags">
+                            <span class="tag">Pampering</span>
+                            <span class="tag">Luxury</span>
+                            <span class="tag">Romantic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggestion Form for Day 3 -->
+            <div class="suggestion-form">
+                <h3 class="suggestion-title">Your Suggestions for Day 3</h3>
+                <form id="suggestionFormDay3">
+                    <div class="form-group">
+                        <label for="suggestionDay3">What would you like to add or change for this day?</label>
+                        <textarea id="suggestionDay3" placeholder="Your suggestions here..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send to WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="love-note">My Heart Belongs With You</div>
+            <p class="footer-text">This journey is just the beginning of our forever. Every moment with you is more magical than the last, and I can't wait to create a lifetime of beautiful memories together.</p>
+        </div>
+    </footer>
+
+    <button class="fab" id="loveBtn">
+        <i class="fas fa-heart"></i>
+        <div class="heart-pulse"></div>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create floating elements
+            const floatingElements = document.getElementById('floatingElements');
+            for (let i = 0; i < 8; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.width = `${Math.random() * 20 + 10}px`;
+                element.style.height = element.style.width;
+                element.style.left = `${Math.random() * 100}vw`;
+                element.style.top = `${Math.random() * 100}vh`;
+                element.style.animationDuration = `${Math.random() * 30 + 30}s`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                floatingElements.appendChild(element);
+            }
+
+            // Tab navigation
+            const dayTabs = document.querySelectorAll('.day-tab');
+            dayTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    dayTabs.forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.itinerary-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    tab.classList.add('active');
+                    document.getElementById(tab.getAttribute('data-day')).classList.add('active');
+                });
+            });
+
+            // Love button
+            const loveBtn = document.getElementById('loveBtn');
+            loveBtn.addEventListener('click', () => {
+                const messages = [
+                    "I love you more than words can express!",
+                    "You're my favorite person in the world!",
+                    "Every moment with you is magical!",
+                    "I fall for you more every day!",
+                    "My heart belongs to you forever!"
+                ];
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                
+                loveBtn.innerHTML = '<i class="fas fa-heart"></i><div class="heart-pulse"></div>';
+                setTimeout(() => {
+                    loveBtn.innerHTML = '<i class="fas fa-heart"></i><div class="heart-pulse"></div>';
+                }, 1000);
+                
+                setTimeout(() => {
+                    alert(`💖 ${randomMessage} 💖`);
+                }, 300);
+            });
+
+            // Download functionality
+            const downloadBtns = document.querySelectorAll('.download-btn');
+            const downloadModal = document.getElementById('downloadModal');
+            const closeDownload = document.getElementById('closeDownload');
+            const downloadExcel = document.getElementById('downloadExcel');
+            const downloadSpreadsheet = document.getElementById('downloadSpreadsheet');
+
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    downloadModal.style.display = 'flex';
+                });
+            });
+
+            closeDownload.addEventListener('click', function() {
+                downloadModal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === downloadModal) {
+                    downloadModal.style.display = 'none';
+                }
+            });
+
+            // Download handlers
+            downloadExcel.addEventListener('click', function() {
+                // Replace with your actual Excel file URL
+                const excelFileUrl = 'path/to/your/itinerary.xlsx';
+                const link = document.createElement('a');
+                link.href = excelFileUrl;
+                link.download = 'Fairytale_Journey_Itinerary.xlsx';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                downloadModal.style.display = 'none';
+            });
+
+            downloadSpreadsheet.addEventListener('click', function() {
+                // Replace with your actual CSV file URL
+                const csvFileUrl = 'path/to/your/itinerary.csv';
+                const link = document.createElement('a');
+                link.href = csvFileUrl;
+                link.download = 'Fairytale_Journey_Itinerary.csv';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                downloadModal.style.display = 'none';
+            });
+
+            // WhatsApp Suggestion Forms
+            const setupSuggestionForm = (formId, dayName) => {
+                const form = document.getElementById(formId);
+                const submitBtn = form.querySelector('.submit-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const suggestion = document.getElementById(`suggestion${dayName}`).value.trim();
+                    
+                    if (suggestion) {
+                        // Replace with your WhatsApp number (format: country code + number without + or 0)
+                        const targetNumber = "6281382184796"; // Example: Indonesia number
+                        
+                        const whatsappMessage = `*Suggestion for ${dayName}:*\n\n${suggestion}\n\n_Sent from Fairytale Journey Website_`;
+                        const encodedMessage = encodeURIComponent(whatsappMessage);
+                        const whatsappUrl = `https://wa.me/${targetNumber}?text=${encodedMessage}`;
+                        
+                        // Open WhatsApp
+                        window.open(whatsappUrl, '_blank');
+                        
+                        // UI Feedback
+                        btnText.textContent = 'Sending...';
+                        
+                        // Reset form after short delay
+                        setTimeout(() => {
+                            form.reset();
+                            btnText.textContent = 'Send to WhatsApp';
+                        }, 1500);
+                    } else {
+                        alert('Please enter your suggestion before sending.');
+                    }
+                });
+            };
+
+            // Initialize all suggestion forms
+            setupSuggestionForm('suggestionFormDay1', 'Day1');
+            setupSuggestionForm('suggestionFormDay2', 'Day2');
+            setupSuggestionForm('suggestionFormDay3', 'Day3');
+        });
+    </script>
+</body>
+</html>
