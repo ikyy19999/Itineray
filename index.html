@@ -2,453 +2,541 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Under Maintenance - Yogyakarta✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Yogyakarta Getaway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --blush: #FFB7C5;
-            --dusty-rose: #E8A87C;
-            --lavender: #D4BEDF;
-            --sage: #A2C4B2;
-            --ivory: #FFF9F0;
-            --charcoal: #3D3B40;
-            --gold: #D4AF37;
-            --deep-purple: #6B46C1;
-            --electric-blue: #3B82F6;
-            --shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
-            --shadow-light: 0 10px 40px rgba(0, 0, 0, 0.08);
-            --transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            --glow: 0 0 30px rgba(255, 183, 197, 0.4);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--ivory) 0%, #f8f1ff 50%, var(--ivory) 100%);
-            color: var(--charcoal);
-            line-height: 1.8;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #fff;
             overflow-x: hidden;
             min-height: 100vh;
             position: relative;
         }
 
-        /* Animated Background */
-        .bg-animation {
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 183, 197, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(212, 190, 223, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(162, 196, 178, 0.1) 0%, transparent 50%);
-            animation: backgroundPulse 8s ease-in-out infinite alternate;
+                radial-gradient(circle at 10% 20%, rgba(255, 107, 157, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(107, 157, 255, 0.1) 0%, transparent 20%);
+            z-index: -2;
         }
 
-        @keyframes backgroundPulse {
-            0% { opacity: 0.8; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.05); }
-        }
-
-        /* Floating geometric shapes */
-        .geometric-shapes {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 20s linear infinite;
-        }
-
-        .shape-1 {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--blush), var(--dusty-rose));
-            border-radius: 50%;
-            top: 10%;
-            left: 10%;
-            animation-duration: 25s;
-        }
-
-        .shape-2 {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, var(--lavender), var(--sage));
-            transform: rotate(45deg);
-            top: 20%;
-            right: 15%;
-            animation-duration: 30s;
-            animation-direction: reverse;
-        }
-
-        .shape-3 {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, var(--sage), var(--gold));
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            bottom: 20%;
-            left: 20%;
-            animation-duration: 35s;
-        }
-
-        .shape-4 {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--dusty-rose), var(--lavender));
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            bottom: 30%;
-            right: 20%;
-            animation-duration: 28s;
-            animation-direction: reverse;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(120deg); }
-            66% { transform: translateY(10px) rotate(240deg); }
-            100% { transform: translateY(0px) rotate(360deg); }
-        }
-
-        /* Main container */
-        .maintenance-container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        header {
             text-align: center;
+            padding: 80px 0 50px;
             position: relative;
         }
 
-        /* 3D Icon Container */
-        .icon-3d-container {
-            perspective: 1000px;
-            margin-bottom: 40px;
-            animation: iconFloat 6s ease-in-out infinite;
-        }
-
-        .icon-3d {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--blush), var(--lavender), var(--sage));
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            box-shadow: 
-                var(--shadow),
-                inset 0 1px 0 rgba(255,255,255,0.3),
-                0 0 50px rgba(255, 183, 197, 0.3);
-            transform-style: preserve-3d;
-            animation: rotate3d 10s linear infinite, iconPulse 4s ease-in-out infinite alternate;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .icon-3d::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shine 3s ease-in-out infinite;
-            transform: rotate(45deg);
-        }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes rotate3d {
-            0% { transform: rotateY(0deg) rotateX(10deg); }
-            100% { transform: rotateY(360deg) rotateX(10deg); }
-        }
-
-        @keyframes iconPulse {
-            0% { box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.3), 0 0 30px rgba(255, 183, 197, 0.3); }
-            100% { box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.3), 0 0 60px rgba(255, 183, 197, 0.6); }
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-        }
-
-        /* Main heading */
-        .main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--deep-purple), var(--electric-blue), var(--blush));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        h1 {
+            font-size: 3.8rem;
             margin-bottom: 20px;
-            animation: gradientShift 4s ease infinite, titleFloat 3s ease-in-out infinite alternate;
+            background: linear-gradient(90deg, #ff6b9d, #ff8fab, #ffb6c1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
             position: relative;
+            animation: titleGlow 4s infinite alternate;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes titleGlow {
+            0% { 
+                text-shadow: 0 0 20px rgba(255, 107, 157, 0.6), 0 0 40px rgba(255, 123, 157, 0.4);
+            }
+            100% { 
+                text-shadow: 0 0 30px rgba(255, 107, 157, 0.8), 0 0 60px rgba(255, 123, 157, 0.6), 0 0 80px rgba(255, 107, 157, 0.4);
+            }
         }
 
-        @keyframes titleFloat {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-10px); }
-        }
-
-        /* Subtitle */
         .subtitle {
-            font-size: clamp(1rem, 4vw, 1.3rem);
-            color: var(--charcoal);
-            margin-bottom: 40px;
-            opacity: 0.8;
-            animation: fadeInUp 1s ease 0.5s both;
-            max-width: 600px;
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            line-height: 1.8;
+            color: #e0e0ff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Progress bar container */
-        .progress-container {
-            width: 100%;
-            max-width: 400px;
-            margin: 40px 0;
-            animation: fadeInUp 1s ease 0.8s both;
-        }
-
-        .progress-label {
+        .days-tabs {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--charcoal);
-        }
-
-        .progress-percentage {
-            font-size: 1.1rem;
-            color: var(--deep-purple);
-            font-weight: 700;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-light);
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--sage), var(--lavender), var(--blush));
-            border-radius: 20px;
-            width: 0%;
-            animation: progressAnimation 3s ease-in-out 1s forwards;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: progressShine 2s ease-in-out 2s infinite;
-        }
-
-        @keyframes progressAnimation {
-            from { width: 0%; }
-            to { width: 75%; }
-        }
-
-        @keyframes progressShine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(200%); }
-        }
-
-        /* Feature cards */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 800px;
+            justify-content: center;
             margin: 50px 0;
-            animation: fadeInUp 1s ease 1.2s both;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+        .day-tab {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #e0e0e0;
+            padding: 20px 35px;
+            font-size: 1.2rem;
             border-radius: 20px;
-            padding: 30px 25px;
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: var(--transition);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 500;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
         }
 
-        .feature-card::before {
+        .day-tab::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--blush), var(--lavender));
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.3), rgba(255, 123, 157, 0.3));
             opacity: 0;
-            transition: var(--transition);
+            transition: opacity 0.4s ease;
             z-index: -1;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow);
-            color: white;
+        .day-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) scale(1.03);
         }
 
-        .feature-card:hover::before {
+        .day-tab:hover::before {
             opacity: 1;
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--sage), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: iconBounce 2s ease-in-out infinite;
-        }
-
-        .feature-card:hover .feature-icon {
-            -webkit-text-fill-color: white;
-        }
-
-        @keyframes iconBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .feature-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--charcoal);
-        }
-
-        .feature-card:hover .feature-title {
+        .day-tab.active {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
             color: white;
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .feature-description {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            line-height: 1.6;
+        .places-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
         }
 
-        /* Contact section */
-        .contact-section {
-            margin-top: 60px;
-            animation: fadeInUp 1s ease 1.5s both;
+        .place-card {
+            background: rgba(30, 30, 46, 0.7);
+            backdrop-filter: blur(25px);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10;
         }
 
-        .contact-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--deep-purple);
+        .place-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 123, 157, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
 
-        .contact-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .place-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
         }
 
-        .contact-btn {
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: var(--transition);
+        .place-card:hover::before {
+            opacity: 1;
+        }
+
+        .place-image {
+            width: 100%;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
             position: relative;
             overflow: hidden;
-            font-size: 1rem;
-            box-shadow: var(--shadow-light);
         }
 
-        .contact-btn::before {
+        .place-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        }
+
+        .place-content {
+            padding: 35px;
+        }
+
+        .place-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ff7eb3;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .place-title i {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #ff7eb3, #ff6b9d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .place-description {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .place-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .detail-box {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px 20px;
+            border-radius: 18px;
+            text-align: center;
+            flex: 1;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .detail-box:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 107, 157, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+        }
+
+        .detail-box i {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ff7eb3;
+        }
+
+        .detail-box a {
+            color: #ff7eb3;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .detail-box a:hover {
+            color: #ff6b9d;
+            text-decoration: underline;
+        }
+
+        .tiktok-icon {
+            color: #ff0050;
+            font-size: 2rem;
+        }
+
+        .tiktok-review {
+            color: #ff0050;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .place-photos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .place-photo {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 120px;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+        }
+
+        .place-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .place-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .place-photo:hover img {
+            transform: scale(1.2);
+        }
+
+        .booking-section {
+            background: rgba(30, 30, 46, 0.8);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 80px 0;
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+            z-index: 25; /* Higher z-index to be above background elements */
+        }
+
+        .booking-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(107, 157, 255, 0.1) 0%, transparent 40%);
+        }
+
+        .booking-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(90deg, #ff7eb3, #ff8fab, #ffb6c1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .booking-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b9d, #ff8fab);
+            border-radius: 3px;
+        }
+
+        .booking-form {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 30; /* Even higher z-index for form elements */
+        }
+
+        .form-group {
+            margin-bottom: 35px;
+            text-align: left;
+            position: relative;
+            z-index: 35; /* High z-index for form groups */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 500;
+            color: #e0e0e0;
+            font-size: 1.2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 22px 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(20, 20, 35, 0.8);
+            color: #fff;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 40; /* High z-index for input elements */
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff7eb3;
+            box-shadow: 0 0 0 5px rgba(255, 126, 179, 0.3);
+            background: rgba(30, 30, 50, 0.9);
+        }
+
+        .form-group textarea {
+            height: 160px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(224, 224, 224, 0.7);
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #ff7eb3, #ff6b9d);
+            color: white;
+            border: none;
+            padding: 22px 50px;
+            font-size: 1.3rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5);
+            display: block;
+            width: 100%;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 40; /* High z-index for button */
+        }
+
+        .submit-button::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: var(--transition);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
         }
 
-        .contact-btn:hover::before {
+        .submit-button:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(255, 107, 157, 0.7);
+        }
+
+        .submit-button:hover::before {
             left: 100%;
         }
 
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
+        .form-message {
+            text-align: center;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 30px;
+            display: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            z-index: 40; /* High z-index for messages */
         }
 
-        .whatsapp-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: var(--shadow);
+        .form-message.success {
+            background: rgba(46, 204, 113, 0.25);
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            display: block;
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
         }
 
-        .email-btn {
-            background: linear-gradient(135deg, var(--electric-blue), var(--deep-purple));
-            color: white;
+        .form-message.error {
+            background: rgba(231, 76, 60, 0.25);
+            border: 1px solid rgba(231, 76, 60, 0.4);
+            display: block;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.2);
         }
 
-        .email-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: var(--shadow);
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 70px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(224, 224, 224, 0.8);
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
         }
 
-        /* Floating particles */
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .days-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .day-tab {
+                width: 90%;
+                margin-bottom: 15px;
+                text-align: center;
+                padding: 18px 30px;
+            }
+
+            .places-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .booking-section {
+                padding: 40px 25px;
+                margin: 60px 0;
+            }
+            
+            .place-photos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .place-content {
+                padding: 25px;
+            }
+            
+            .place-image {
+                height: 200px;
+            }
+            
+            .booking-title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
         .particles {
             position: fixed;
             top: 0;
@@ -456,128 +544,96 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
         }
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--blush);
             border-radius: 50%;
-            opacity: 0.6;
-            animation: particleFloat linear infinite;
+            background: rgba(255, 126, 179, 0.7);
+            animation: float 20s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(255, 126, 179, 0.5);
         }
 
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-10vh) translateX(100px);
-                opacity: 0;
-            }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, 40px) rotate(90deg); }
+            50% { transform: translate(0, 80px) rotate(180deg); }
+            75% { transform: translate(-30px, 40px) rotate(270deg); }
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .maintenance-container {
-                padding: 20px 15px;
-            }
-
-            .icon-3d {
-                width: 100px;
-                height: 100px;
-                font-size: 2.5rem;
-            }
-
-            .progress-container {
-                max-width: 300px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-            }
-
-            .feature-card {
-                padding: 25px 20px;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contact-btn {
-                min-width: 200px;
-                justify-content: center;
-            }
+        .glow-effect {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 126, 179, 0.2) 0%, transparent 70%);
+            filter: blur(50px);
+            z-index: 0;
         }
 
-        @media (max-width: 480px) {
-            .icon-3d {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-                padding: 0 10px;
-            }
-
-            .feature-card {
-                padding: 20px 15px;
-            }
-
-            .contact-btn {
-                padding: 12px 25px;
-                font-size: 0.9rem;
-            }
+        .glow-1 {
+            top: 5%;
+            left: 5%;
+            animation: pulse 10s infinite alternate;
         }
 
-        /* Animation delays for staggered effect */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .glow-2 {
+            bottom: 10%;
+            right: 5%;
+            background: radial-gradient(circle, rgba(107, 157, 255, 0.2) 0%, transparent 70%);
+            animation: pulse 12s infinite alternate-reverse;
         }
 
-        /* Smooth loading animation */
+        @keyframes pulse {
+            0% { opacity: 0.2; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        /* Heart animation */
+        .heart-animation {
+            position: absolute;
+            font-size: 25px;
+            color: #ff6b9d;
+            animation: heartFloat 4s forwards;
+            pointer-events: none;
+            z-index: 1000;
+            text-shadow: 0 0 15px rgba(255, 107, 157, 0.8);
+        }
+
+        @keyframes heartFloat {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-150px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Loading animation */
         .loading-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--ivory), #f8f1ff);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
             display: flex;
-            align-items: center;
             justify-content: center;
-            z-index: 9999;
-            animation: fadeOut 1s ease 2s forwards;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-content {
+            text-align: center;
         }
 
         .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 183, 197, 0.3);
-            border-top: 4px solid var(--blush);
+            width: 100px;
+            height: 100px;
+            border: 6px solid rgba(255, 107, 157, 0.3);
+            border-top: 6px solid #ff6b9d;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 1.2s linear infinite;
+            margin: 0 auto 40px;
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.4);
         }
 
         @keyframes spin {
@@ -585,260 +641,812 @@
             100% { transform: rotate(360deg); }
         }
 
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
+        .loading-text {
+            font-size: 1.8rem;
+            color: #ff7eb3;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Day transition animation */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
         }
     </style>
 </head>
 <body>
-    <!-- Loading overlay -->
-    <div class="loading-overlay">
-        <div class="loading-spinner"></div>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Preparing Your Romantic Journey...</div>
+        </div>
     </div>
 
-    <!-- Background animations -->
-    <div class="bg-animation"></div>
-    
-    <!-- Geometric shapes -->
-    <div class="geometric-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-    </div>
-
-    <!-- Floating particles -->
     <div class="particles" id="particles"></div>
+    <div class="glow-effect glow-1"></div>
+    <div class="glow-effect glow-2"></div>
 
-    <!-- Main content -->
-    <div class="maintenance-container">
-        <!-- 3D Icon -->
-        <div class="icon-3d-container">
-            <div class="icon-3d">
-                <i class="fas fa-tools"></i>
-            </div>
+    <div class="container">
+        <header>
+            <h1>Romantic Yogyakarta Getaway</h1>
+            <p class="subtitle">A curated 4-day journey through Jogja's most enchanting destinations, designed for couples seeking unforgettable memories and magical moments together</p>
+        </header>
+
+        <div class="days-tabs" id="daysTabs">
+            <button class="day-tab active" data-day="day1">Day 1: Cultural Heritage</button>
+            <button class="day-tab" data-day="day2">Day 2: Ancient Temples</button>
+            <button class="day-tab" data-day="day3">Day 3: Natural Wonders</button>
+            <button class="day-tab" data-day="day4">Day 4: Art & Craft</button>
         </div>
 
-        <!-- Main title -->
-        <h1 class="main-title">Under Maintenance</h1>
-        
-        <!-- Subtitle -->
-        <p class="subtitle">
-            We're working hard to bring you an amazing experience for your Yogyakarta journey. 
-            Our fairytale adventure will be ready soon with enhanced features and magical moments.
-        </p>
-
-        <!-- Progress bar -->
-        <div class="progress-container">
-            <div class="progress-label">
-                <span>Progress</span>
-                <span class="progress-percentage" id="progressText">0%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-        </div>
-
-        <!-- Features grid -->
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-route"></i>
+        <!-- Day 1 Content -->
+        <div class="places-container active" id="day1-content">
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/2c183a/FFFFFF?text=Kraton+Yogyakarta')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-crown"></i> Kraton Yogyakarta</h3>
+                    <p class="place-description">Explore the Sultan's palace and discover centuries of Javanese culture and history together in this magnificent royal residence.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>2 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Kraton+Yogyakarta" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Kraton+Yogyakarta" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/3a244a/FFFFFF?text=Kraton1" alt="Kraton Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/3a244a/FFFFFF?text=Kraton2" alt="Kraton Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/3a244a/FFFFFF?text=Kraton3" alt="Kraton Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/3a244a/FFFFFF?text=Kraton4" alt="Kraton Photo 4">
+                        </div>
+                    </div>
                 </div>
-                <h3 class="feature-title">Enhanced Journey Planning</h3>
-                <p class="feature-description">
-                    Interactive maps, detailed itineraries, and personalized recommendations for your perfect trip.
-                </p>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-camera"></i>
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/3a244a/FFFFFF?text=Sultan%27s+Mosque')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-mosque"></i> Sultan's Mosque</h3>
+                    <p class="place-description">Experience the serene beauty of this historic mosque with its unique Javanese-Islamic architecture and peaceful ambiance.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>1 Hour</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Sultan%27s+Mosque+Yogyakarta" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Sultan%27s+Mosque+Yogyakarta" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/4a2d5a/FFFFFF?text=Mosque1" alt="Mosque Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/4a2d5a/FFFFFF?text=Mosque2" alt="Mosque Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/4a2d5a/FFFFFF?text=Mosque3" alt="Mosque Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/4a2d5a/FFFFFF?text=Mosque4" alt="Mosque Photo 4">
+                        </div>
+                    </div>
                 </div>
-                <h3 class="feature-title">Photo Gallery</h3>
-                <p class="feature-description">
-                    High-quality image collections, virtual tours, and downloadable memories from each location.
-                </p>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-mobile-alt"></i>
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/4a2d5a/FFFFFF?text=Affandi+Museum')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-palette"></i> Affandi Museum</h3>
+                    <p class="place-description">Immerse yourselves in the passionate world of Indonesian art through Affandi's expressive masterpieces and vibrant paintings.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>1.5 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Affandi+Museum+Yogyakarta" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Affandi+Museum+Yogyakarta" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/5a366a/FFFFFF?text=Affandi1" alt="Affandi Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/5a366a/FFFFFF?text=Affandi2" alt="Affandi Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/5a366a/FFFFFF?text=Affandi3" alt="Affandi Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/5a366a/FFFFFF?text=Affandi4" alt="Affandi Photo 4">
+                        </div>
+                    </div>
                 </div>
-                <h3 class="feature-title">Mobile Experience</h3>
-                <p class="feature-description">
-                    Optimized mobile interface with offline capabilities and real-time updates for travelers.
-                </p>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/5a366a/FFFFFF?text=Malioboro+Street')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-shopping-bag"></i> Malioboro Street</h3>
+                    <p class="place-description">Enjoy romantic evening walks, street food, and shopping for souvenirs to remember your special trip in this iconic street.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>3 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Malioboro+Street+Yogyakarta" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Malioboro+Street+Yogyakarta" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/6a3f7a/FFFFFF?text=Malioboro1" alt="Malioboro Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/6a3f7a/FFFFFF?text=Malioboro2" alt="Malioboro Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/6a3f7a/FFFFFF?text=Malioboro3" alt="Malioboro Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/6a3f7a/FFFFFF?text=Malioboro4" alt="Malioboro Photo 4">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Contact section -->
-        <div class="contact-section">
-            <h2 class="contact-title">Stay Connected</h2>
-            <div class="contact-buttons">
-                <a href="https://wa.me/6281382184796?text=Hi! I'm interested in the Yogyakarta journey website. When will it be ready?" class="contact-btn whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i>
-                    WhatsApp Us
-                </a>
-                <a href="mailto:rm9156102@gmail.com?subject=Yogyakarta Journey Website&body=Hi! I'm interested in updates about the website." class="contact-btn email-btn">
-                    <i class="fas fa-envelope"></i>
-                    Email Us
-                </a>
+        <!-- Day 2 Content (Hidden by default) -->
+        <div class="places-container" id="day2-content" style="display: none;">
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/6a3f7a/FFFFFF?text=Prambanan+Temple')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-archway"></i> Prambanan Temple</h3>
+                    <p class="place-description">Witness the breathtaking sunrise at this UNESCO World Heritage Hindu temple complex with its towering spired shrines.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>3 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Prambanan+Temple" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Prambanan+Temple" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/7a488a/FFFFFF?text=Prambanan1" alt="Prambanan Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/7a488a/FFFFFF?text=Prambanan2" alt="Prambanan Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/7a488a/FFFFFF?text=Prambanan3" alt="Prambanan Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/7a488a/FFFFFF?text=Prambanan4" alt="Prambanan Photo 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/7a488a/FFFFFF?text=Ratu+Boko')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-om"></i> Ratu Boko</h3>
+                    <p class="place-description">Enjoy panoramic views of the countryside and Mount Merapi from this ancient palace complex with its dramatic terraces.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>2 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Ratu+Boko" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Ratu+Boko" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/8a519a/FFFFFF?text=RatuBoko1" alt="Ratu Boko Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/8a519a/FFFFFF?text=RatuBoko2" alt="Ratu Boko Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/8a519a/FFFFFF?text=RatuBoko3" alt="Ratu Boko Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/8a519a/FFFFFF?text=RatuBoko4" alt="Ratu Boko Photo 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/8a519a/FFFFFF?text=Mataram+Park')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-water"></i> Mataram Park</h3>
+                    <p class="place-description">Relax together in this beautiful park with landscaped gardens, a serene lake, and peaceful walking paths.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>1.5 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Mataram+Park" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Mataram+Park" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/9a5aaa/FFFFFF?text=Mataram1" alt="Mataram Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/9a5aaa/FFFFFF?text=Mataram2" alt="Mataram Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/9a5aaa/FFFFFF?text=Mataram3" alt="Mataram Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/9a5aaa/FFFFFF?text=Mataram4" alt="Mataram Photo 4">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Day 3 Content (Hidden by default) -->
+        <div class="places-container" id="day3-content" style="display: none;">
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/9a5aaa/FFFFFF?text=Mount+Merapi')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-mountain"></i> Mount Merapi</h3>
+                    <p class="place-description">Experience an adventurous jeep tour to the crater rim and share unforgettable moments together with stunning volcanic views.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>5 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Mount+Merapi" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Mount+Merapi" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/aa63ba/FFFFFF?text=Merapi1" alt="Merapi Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/aa63ba/FFFFFF?text=Merapi2" alt="Merapi Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/aa63ba/FFFFFF?text=Merapi3" alt="Merapi Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/aa63ba/FFFFFF?text=Merapi4" alt="Merapi Photo 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/aa63ba/FFFFFF?text=Borobudur+Sunrise')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-hot-tub"></i> Borobudur Sunrise</h3>
+                    <p class="place-description">Witness the magical sunrise from the world's largest Buddhist temple - a moment you'll cherish forever with your loved one.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>3 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Borobudur+Temple" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Borobudur+Temple" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ba6cca/FFFFFF?text=Borobudur1" alt="Borobudur Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ba6cca/FFFFFF?text=Borobudur2" alt="Borobudur Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ba6cca/FFFFFF?text=Borobudur3" alt="Borobudur Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ba6cca/FFFFFF?text=Borobudur4" alt="Borobudur Photo 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/ba6cca/FFFFFF?text=Kaliurang+Forest')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-tree"></i> Kaliurang Forest</h3>
+                    <p class="place-description">Enjoy cool mountain air and beautiful forest walks with stunning views of Mount Merapi in this tranquil highland retreat.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>2 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Kaliurang+Forest" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Kaliurang+Forest" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ca75da/FFFFFF?text=Kaliurang1" alt="Kaliurang Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ca75da/FFFFFF?text=Kaliurang2" alt="Kaliurang Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ca75da/FFFFFF?text=Kaliurang3" alt="Kaliurang Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ca75da/FFFFFF?text=Kaliurang4" alt="Kaliurang Photo 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 4 Content (Hidden by default) -->
+        <div class="places-container" id="day4-content" style="display: none;">
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/ca75da/FFFFFF?text=Batik+Workshop')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-paint-brush"></i> Batik Workshop</h3>
+                    <p class="place-description">Create your own unique batik designs together and take home personalized souvenirs from this traditional Indonesian art form.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>3 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Batik+Workshop+Yogyakarta" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Batik+Workshop+Yogyakarta" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/da7eea/FFFFFF?text=Batik1" alt="Batik Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/da7eea/FFFFFF?text=Batik2" alt="Batik Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/da7eea/FFFFFF?text=Batik3" alt="Batik Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/da7eea/FFFFFF?text=Batik4" alt="Batik Photo 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/da7eea/FFFFFF?text=Silver+Village')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-hand-holding-heart"></i> Silver Village</h3>
+                    <p class="place-description">Watch skilled artisans create beautiful silver jewelry and maybe design a special piece for each other in this charming village.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>2 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Silver+Village+Kotagede" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Silver+Village+Kotagede" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ea87fa/FFFFFF?text=Silver1" alt="Silver Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ea87fa/FFFFFF?text=Silver2" alt="Silver Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ea87fa/FFFFFF?text=Silver3" alt="Silver Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/ea87fa/FFFFFF?text=Silver4" alt="Silver Photo 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://placehold.co/400x240/ea87fa/FFFFFF?text=Sonobudoyo+Museum')"></div>
+                <div class="place-content">
+                    <h3 class="place-title"><i class="fas fa-book"></i> Sonobudoyo Museum</h3>
+                    <p class="place-description">Discover traditional Javanese musical instruments and cultural artifacts together in this fascinating cultural museum.</p>
+                    <div class="place-details">
+                        <div class="detail-box">
+                            <i class="fas fa-clock"></i>
+                            <div>1.5 Hours</div>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://maps.google.com/?q=Sonobudoyo+Museum" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>Maps</div>
+                            </a>
+                        </div>
+                        <div class="detail-box">
+                            <a href="https://www.tiktok.com/search?q=Sonobudoyo+Museum" target="_blank">
+                                <i class="fab fa-tiktok tiktok-icon"></i>
+                                <div class="tiktok-review">Reviews</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="place-photos">
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/fa8ffb/FFFFFF?text=Sonobudoyo1" alt="Sonobudoyo Photo 1">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/fa8ffb/FFFFFF?text=Sonobudoyo2" alt="Sonobudoyo Photo 2">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/fa8ffb/FFFFFF?text=Sonobudoyo3" alt="Sonobudoyo Photo 3">
+                        </div>
+                        <div class="place-photo">
+                            <img src="https://placehold.co/200x120/fa8ffb/FFFFFF?text=Sonobudoyo4" alt="Sonobudoyo Photo 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-section">
+            <h2 class="booking-title">Plan Your Romantic Getaway</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Your Names</label>
+                    <input type="text" id="name" name="name" placeholder="Enter both your names" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Travel Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Special Requests</label>
+                    <textarea id="message" name="message" placeholder="Any special romantic arrangements or questions?"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Booking Request</button>
+                <div id="formMessage" class="form-message"></div>
+            </form>
+        </div>
+
+        <footer>
+            <p>© 2023 Romantic Yogyakarta Getaway | Designed for Couples Seeking Unforgettable Memories</p>
+        </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create floating particles
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Create floating particles
+        function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const colors = ['#FFB7C5', '#E8A87C', '#D4BEDF', '#A2C4B2', '#D4AF37'];
+            const particleCount = 40;
             
-            function createParticle() {
+            for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                particlesContainer.appendChild(particle);
-
-                // Remove particle after animation
-                setTimeout(() => {
-                    particle.remove();
-                }, 20000);
-            }
-
-            // Create particles periodically
-            setInterval(createParticle, 300);
-
-            // Animate progress percentage
-            const progressText = document.getElementById('progressText');
-            let progress = 0;
-            const targetProgress = 75;
-
-            const progressInterval = setInterval(() => {
-                if (progress < targetProgress) {
-                    progress += 1;
-                    progressText.textContent = progress + '%';
-                } else {
-                    clearInterval(progressInterval);
-                }
-            }, 40);
-
-            // Add click effects to cards
-            const featureCards = document.querySelectorAll('.feature-card');
-            featureCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    // Create ripple effect
-                    const ripple = document.createElement('div');
-                    ripple.style.position = 'absolute';
-                    ripple.style.borderRadius = '50%';
-                    ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-                    ripple.style.transform = 'scale(0)';
-                    ripple.style.animation = 'ripple 0.6s linear';
-                    ripple.style.left = '50%';
-                    ripple.style.top = '50%';
-                    ripple.style.width = '100px';
-                    ripple.style.height = '100px';
-                    ripple.style.marginLeft = '-50px';
-                    ripple.style.marginTop = '-50px';
-                    ripple.style.pointerEvents = 'none';
-
-                    this.style.position = 'relative';
-                    this.appendChild(ripple);
-
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-
-            // Add CSS for ripple animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(2);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-
-            // Add hover effect to 3D icon
-            const icon3d = document.querySelector('.icon-3d');
-            icon3d.addEventListener('mouseenter', function() {
-                this.style.animationPlayState = 'paused';
-                this.style.transform = 'rotateY(45deg) rotateX(15deg) scale(1.1)';
-            });
-
-            icon3d.addEventListener('mouseleave', function() {
-                this.style.animationPlayState = 'running';
-                this.style.transform = '';
-            });
-
-            // Parallax effect for geometric shapes
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const shapes = document.querySelectorAll('.shape');
                 
-                shapes.forEach((shape, index) => {
-                    const speed = 0.5 + (index * 0.1);
-                    shape.style.transform = `translateY(${scrolled * speed}px)`;
-                });
-            });
+                // Random size
+                const size = Math.random() * 15 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random color
+                const colors = [
+                    'rgba(255, 107, 157, 0.7)',
+                    'rgba(255, 123, 157, 0.7)',
+                    'rgba(107, 157, 255, 0.7)',
+                    'rgba(123, 107, 255, 0.7)'
+                ];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                
+                // Random animation
+                particle.style.animationDuration = `${Math.random() * 25 + 15}s`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particle.style.boxShadow = `0 0 ${Math.random() * 30 + 10}px ${color.replace('0.7', '0.5')}`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
 
-            // Smooth reveal animations for elements
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+        // Day tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Day tab switching functionality with animation
+            document.querySelectorAll('.day-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get current and target content
+                    const currentContent = document.querySelector('.places-container.active');
+                    const targetDay = this.getAttribute('data-day');
+                    const targetContent = document.getElementById(`${targetDay}-content`);
+                    
+                    if (currentContent && targetContent) {
+                        // Fade out current content
+                        currentContent.classList.remove('active');
+                        currentContent.classList.add('fade-out');
+                        
+                        // After fade out, switch content and fade in
+                        setTimeout(() => {
+                            // Hide all content sections
+                            document.querySelectorAll('.places-container').forEach(container => {
+                                container.style.display = 'none';
+                                container.classList.remove('fade-out');
+                            });
+                            
+                            // Show and fade in target content
+                            targetContent.style.display = 'grid';
+                            targetContent.classList.add('active');
+                        }, 300);
                     }
                 });
-            }, observerOptions);
-
-            // Observe elements for animation
-            document.querySelectorAll('.feature-card, .contact-section').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
-                observer.observe(el);
             });
+        });
 
-            // Add dynamic background color changes
-            let colorIndex = 0;
-            const backgroundColors = [
-                'linear-gradient(135deg, var(--ivory) 0%, #f8f1ff 50%, var(--ivory) 100%)',
-                'linear-gradient(135deg, var(--ivory) 0%, #fff8f0 50%, var(--ivory) 100%)',
-                'linear-gradient(135deg, var(--ivory) 0%, #f0f8ff 50%, var(--ivory) 100%)'
-            ];
+        // Add hover effects to place cards
+        document.querySelectorAll('.place-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
 
-            setInterval(() => {
-                colorIndex = (colorIndex + 1) % backgroundColors.length;
-                document.body.style.background = backgroundColors[colorIndex];
-            }, 10000);
+        // Add animation to submit button
+        const submitButton = document.querySelector('.submit-button');
+        if (submitButton) {
+            submitButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            submitButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        }
 
-            // Add keyboard interactions
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    // Trigger a fun animation
-                    const mainTitle = document.querySelector('.main-title');
-                    mainTitle.style.animation = 'none';
+        // Form submission handling
+        const bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const date = document.getElementById('date').value;
+                const message = document.getElementById('message').value;
+                
+                // Format the message for Telegram
+                const telegramMessage = `*Romantic Getaway Booking*\n\n*Couple:* ${name}\n*Date:* ${date}\n*Special Requests:* ${message || 'No special requests'}`;
+                
+                // Telegram bot configuration (replace with your actual token and chat ID)
+                const botToken = 'YOUR_BOT_TOKEN';
+                const chatId = 'YOUR_CHAT_ID';
+                
+                // Create Telegram API URL
+                const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                
+                // Create form data
+                const formData = new FormData();
+                formData.append('chat_id', chatId);
+                formData.append('text', telegramMessage);
+                formData.append('parse_mode', 'Markdown');
+                
+                // Send message using XMLHttpRequest
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', telegramUrl, true);
+                xhr.onload = function() {
+                    const formMessage = document.getElementById('formMessage');
+                    if (xhr.status === 200) {
+                        formMessage.className = 'form-message success';
+                        formMessage.innerHTML = 'Booking request sent successfully! We will contact you shortly to plan your romantic getaway.';
+                        
+                        // Reset form
+                        document.getElementById('bookingForm').reset();
+                    } else {
+                        formMessage.className = 'form-message error';
+                        formMessage.innerHTML = 'Failed to send booking request. Please try again.';
+                    }
+                    
+                    // Hide message after 5 seconds
                     setTimeout(() => {
-                        mainTitle.style.animation = 'gradientShift 4s ease infinite, titleFloat 3s ease-in-out infinite alternate';
-                    }, 10);
-                }
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                };
+                
+                xhr.onerror = function() {
+                    const formMessage = document.getElementById('formMessage');
+                    formMessage.className = 'form-message error';
+                    formMessage.innerHTML = 'Failed to send booking request. Please try again.';
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                };
+                
+                xhr.send(formData);
             });
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            createParticles();
+            
+            // Hide loading screen after 2.5 seconds
+            setTimeout(() => {
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                if (loadingOverlay) {
+                    loadingOverlay.style.opacity = '0';
+                    loadingOverlay.style.visibility = 'hidden';
+                    
+                    // Remove overlay after transition
+                    setTimeout(() => {
+                        loadingOverlay.classList.add('hidden');
+                    }, 800);
+                }
+            }, 2500);
+        });
+
+        // Add heart animation on click
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.place-card') || e.target.closest('.submit-button')) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-animation';
+                heart.innerHTML = '❤';
+                heart.style.left = (e.clientX - 12) + 'px';
+                heart.style.top = (e.clientY - 12) + 'px';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
         });
     </script>
 </body>
