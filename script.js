@@ -10,10 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.top = `${Math.random() * 100}vh`;
         element.style.animationDuration = `${Math.random() * 30 + 30}s`;
         element.style.animationDelay = `${Math.random() * 5}s`;
-        element.style.background = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.3)`;
+        if (document.body.classList.contains('dark-mode')) {
+            element.style.background = `rgba(${Math.floor(Math.random() * 100 + 50)}, ${Math.floor(Math.random() * 100 + 50)}, ${Math.floor(Math.random() * 100 + 150)}, 0.3)`;
+        } else {
+            element.style.background = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.3)`;
+        }
         floatingElements.appendChild(element);
     }
-
     // Create sparkle effect when clicking
     document.addEventListener('click', function(e) {
         if (e.target.id !== 'loveBtn') {
@@ -25,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 sparkle.style.animationDelay = `${i * 0.1}s`;
                 sparkle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
                 document.body.appendChild(sparkle);
-                
                 // Remove sparkle after animation
                 setTimeout(() => {
                     sparkle.remove();
@@ -33,26 +35,36 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-
     // Dark Mode Toggle
     const darkModeToggle = document.getElementById('darkModeToggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
     // Check local storage or system preference
     if (localStorage.getItem('darkMode') === 'enabled' || 
         (localStorage.getItem('darkMode') === null && prefersDarkScheme.matches)) {
         document.body.classList.add('dark-mode');
     }
-    
+    let clickCount = 0;
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDarkMode = document.body.classList.contains('dark-mode');
         localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
-        
         // Add confetti effect when changing modes
         createConfetti();
+        // Galaxy mode on 5th click
+        clickCount++;
+        if (clickCount === 5) {
+            // Contoh: Ubah semua warna ke mode galaxy
+            document.documentElement.style.setProperty('--blush', '#9d65ff');
+            document.documentElement.style.setProperty('--sage', '#6a3093');
+            createHeartConfetti();
+        }
+        setTimeout(() => { clickCount = 0; }, 1000);
     });
-
+    // Listen for system theme changes
+    prefersDarkScheme.addListener(e => {
+        if (localStorage.getItem('darkMode')) return;
+        document.body.classList.toggle('dark-mode', e.matches);
+    });
     // Tab navigation
     const dayTabs = document.querySelectorAll('.day-tab');
     dayTabs.forEach(tab => {
@@ -63,12 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             tab.classList.add('active');
             document.getElementById(tab.getAttribute('data-day')).classList.add('active');
-            
             // Add confetti effect when changing tabs
             createConfetti();
         });
     });
-
     // Love button
     const loveBtn = document.getElementById('loveBtn');
     loveBtn.addEventListener('click', () => {
@@ -80,22 +90,18 @@ document.addEventListener('DOMContentLoaded', function() {
             "My heart belongs to you forever!"
         ];
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-        
         // Heart animation
         loveBtn.innerHTML = '<i class="fas fa-heart" style="transform: scale(1.3); transition: all 0.3s ease;"></i><div class="heart-pulse"></div>';
         setTimeout(() => {
             loveBtn.innerHTML = '<i class="fas fa-heart"></i><div class="heart-pulse"></div>';
         }, 300);
-        
         // Create heart-shaped confetti
         createHeartConfetti();
-        
         // Show message with delay
         setTimeout(() => {
             alert(`💖 ${randomMessage} 💖`);
         }, 500);
     });
-
     // Add image card flip functionality
     const imageCards = document.querySelectorAll('.image-card');
     imageCards.forEach(card => {
@@ -103,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.toggle('flipped');
         });
     });
-
     // Read More button functionality
     const readMoreBtns = document.querySelectorAll('.read-more-btn');
     readMoreBtns.forEach(btn => {
@@ -112,18 +117,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = this.getAttribute('data-target');
             const targetContent = document.getElementById(targetId);
             targetContent.classList.toggle('active');
-            
             // Scroll to the expanded content if it's being opened
             if (targetContent.classList.contains('active')) {
                 targetContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         });
     });
-
     // Fixed download buttons functionality
     const fixedDownloadExcel = document.getElementById('fixedDownloadExcel');
     const fixedDownloadSpreadsheet = document.getElementById('fixedDownloadSpreadsheet');
-
     fixedDownloadExcel.addEventListener('click', function() {
         // Replace with your actual Excel file URL
         const excelFileUrl = 'path/to/your/itinerary.xlsx';
@@ -133,11 +135,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        
         // Confetti effect on download
         createConfetti();
     });
-
     fixedDownloadSpreadsheet.addEventListener('click', function() {
         // Replace with your actual CSV file URL
         const csvFileUrl = 'path/to/your/itinerary.csv';
@@ -147,15 +147,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        
         // Confetti effect on download
         createConfetti();
     });
-
     // Create confetti effect
     function createConfetti() {
-        const colors = ['#FFB7C5', '#E8A87C', '#D4BEDF', '#A2C4B2', '#D4AF37'];
-        
+        const colors = document.body.classList.contains('dark-mode') 
+            ? ['#6a3093', '#a044ff', '#D4BEDF', '#A2C4B2', '#D4AF37']
+            : ['#FFB7C5', '#E8A87C', '#D4BEDF', '#A2C4B2', '#D4AF37'];
         for (let i = 0; i < 50; i++) {
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
@@ -165,14 +164,12 @@ document.addEventListener('DOMContentLoaded', function() {
             confetti.style.height = confetti.style.width;
             confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
             document.body.appendChild(confetti);
-            
             // Remove confetti after animation
             setTimeout(() => {
                 confetti.remove();
             }, 5000);
         }
     }
-    
     // Create heart-shaped confetti
     function createHeartConfetti() {
         const heartContainer = document.createElement('div');
@@ -184,10 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
         heartContainer.style.pointerEvents = 'none';
         heartContainer.style.zIndex = '9999';
         document.body.appendChild(heartContainer);
-        
         const heartCount = 20;
         const colors = ['#FFB7C5', '#E8A87C', '#D4BEDF', '#A2C4B2', '#D4AF37'];
-        
         for (let i = 0; i < heartCount; i++) {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️';
@@ -201,15 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
             heart.style.color = colors[Math.floor(Math.random() * colors.length)];
             heart.style.setProperty('--end-y', `${Math.random() * -100 - 50}vh`);
             heart.style.setProperty('--end-x', `${Math.random() * 100 - 50}px`);
-            
             heartContainer.appendChild(heart);
-            
             // Remove heart after animation
             setTimeout(() => {
                 heart.remove();
             }, 5000);
         }
-        
         // Add CSS for heart animation
         const style = document.createElement('style');
         style.textContent = `
@@ -225,49 +217,84 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         `;
         document.head.appendChild(style);
-        
         // Remove container after all hearts are gone
         setTimeout(() => {
             heartContainer.remove();
             style.remove();
         }, 5000);
     }
-
-    // WhatsApp Suggestion Forms
+    // Telegram Bot Functionality
     const setupSuggestionForm = (formId, dayName) => {
         const form = document.getElementById(formId);
         const submitBtn = form.querySelector('.submit-btn');
         const btnText = submitBtn.querySelector('.btn-text');
         
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            const suggestion = document.getElementById(`suggestion${dayName}`).value.trim();
             
-            if (suggestion) {
-                // Replace with your actual WhatsApp number (format: country code + number without + or 0)
-                const targetNumber = "YOUR_NUMBER"; // Example: Indonesia number
-                
-                const whatsappMessage = `*Suggestion for ${dayName}:*\n\n${suggestion}\n\n_Sent from Fairytale Journey Website_`;
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                const whatsappUrl = `https://wa.me/${targetNumber}?text=${encodedMessage}`;
-                
-                // Open WhatsApp
-                window.open(whatsappUrl, '_blank');
-                
+            // Get form values
+            const name = document.getElementById(`name${dayName}`).value.trim();
+            const destination = document.getElementById(`destination${dayName}`).value.trim();
+            const travelTime = document.getElementById(`travelTime${dayName}`).value;
+            const stayTime = document.getElementById(`stayTime${dayName}`).value;
+            const notes = document.getElementById(`notes${dayName}`).value.trim();
+            
+            if (!name || !destination) {
+                alert('Please fill in at least your name and destination');
+                return;
+            }
+            
+            // Replace with your actual Telegram bot token and chat ID
+            const botToken = '8472090032:AAH172QfDrXEHXYw-JPIOnMu5oBsiYobVOg';
+            const chatId = '-4866132216';
+            
+            // Format the message
+            const message = `*New Suggestion for ${dayName.replace('Day', 'Day ')}*
+        
+Name: ${name}
+Destination: ${destination}
+Travel Time: ${travelTime || 'Not specified'} minutes
+Stay Time: ${stayTime || 'Not specified'} minutes
+Notes: ${notes || 'None'}
+
+_Sent from Risaa Journey_`;
+            
+            try {
                 // UI Feedback
                 btnText.textContent = 'Sending...';
                 submitBtn.style.background = 'linear-gradient(135deg, var(--sage), var(--lavender))';
                 
-                // Create small confetti effect
-                createConfetti();
+                // Send to Telegram
+                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
                 
-                // Reset form after short delay
-                setTimeout(() => {
+                const data = await response.json();
+                
+                if (data.ok) {
+                    // Success - show confetti and reset form
+                    createConfetti();
                     form.reset();
-                    btnText.textContent = 'Send to WhatsApp';
-                }, 1500);
-            } else {
-                alert('Please enter your suggestion before sending.');
+                    btnText.textContent = 'Sent! ✓';
+                    
+                    setTimeout(() => {
+                        btnText.textContent = 'Send to Telegram';
+                    }, 2000);
+                } else {
+                    throw new Error(data.description || 'Failed to send');
+                }
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+                alert('Failed to send suggestion. Please try again later.');
+                btnText.textContent = 'Send to Telegram';
             }
         });
     };
@@ -276,12 +303,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSuggestionForm('suggestionFormDay1', 'Day1');
     setupSuggestionForm('suggestionFormDay2', 'Day2');
     setupSuggestionForm('suggestionFormDay3', 'Day3');
-    
     // Photo Gallery Modal Functionality
     const photoModal = document.getElementById('photoModal');
     const galleryContainer = document.getElementById('galleryContainer');
     const downloadAllBtn = document.getElementById('downloadAllBtn');
-
     // Define photo collections for each location
     const photoCollections = {
         'Lempuyangan Station': [
@@ -389,27 +414,21 @@ document.addEventListener('DOMContentLoaded', function() {
             'assets/L\'Union Pizza.jpg',
         ]
     };
-
     // Function to open modal with specific photos
     function openPhotoGallery(title) {
         const mediaItems = photoCollections[title] || [];
-        
         // Clear previous gallery items
         galleryContainer.innerHTML = '';
-        
         // Set modal title
         document.querySelector('.modal-title').textContent = `${title} Media`;
-        
         // Add photos and videos to gallery
         mediaItems.forEach((mediaUrl, index) => {
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery-item';
-            
             // Check if it's a video (by file extension)
             const isVideo = mediaUrl.toLowerCase().endsWith('.mp4') || 
                            mediaUrl.toLowerCase().endsWith('.webm') || 
                            mediaUrl.toLowerCase().endsWith('.ogg');
-            
             if (isVideo) {
                 galleryItem.innerHTML = `
                     <video class="gallery-video" controls>
@@ -431,21 +450,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     </button>
                 `;
             }
-            
             galleryContainer.appendChild(galleryItem);
         });
-        
         // Show modal
         photoModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
-
     // Close modal
     function closeModal() {
         photoModal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
-
     // Event listeners for modal
     document.querySelector('.close-modal').addEventListener('click', closeModal);
     window.addEventListener('click', (e) => {
@@ -453,7 +468,6 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
-
     // Add click handler to all "Learn More" buttons
     document.querySelectorAll('.read-more-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
@@ -462,14 +476,12 @@ document.addEventListener('DOMContentLoaded', function() {
             openPhotoGallery(title);
         });
     });
-
     // Download single image or video
     galleryContainer.addEventListener('click', (e) => {
         if (e.target.closest('.download-btn')) {
             const btn = e.target.closest('.download-btn');
             const mediaUrl = btn.getAttribute('data-url');
             const fileName = btn.getAttribute('data-filename');
-            
             // Create a temporary link to trigger download
             const link = document.createElement('a');
             link.href = mediaUrl;
@@ -477,7 +489,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            
             // Show feedback
             const originalHTML = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-check"></i>';
@@ -486,17 +497,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000);
         }
     });
-
     // Download all images and videos as ZIP
     downloadAllBtn.addEventListener('click', async function() {
         const title = document.querySelector('.modal-title').textContent.replace(' Media', '');
         const mediaItems = photoCollections[title] || [];
-        
         if (mediaItems.length === 0) {
             alert('No media available to download');
             return;
         }
-        
         // Show loading indicator
         const loading = document.createElement('div');
         loading.className = 'loading';
@@ -505,37 +513,30 @@ document.addEventListener('DOMContentLoaded', function() {
             <p>Preparing your download...</p>
         `;
         document.body.appendChild(loading);
-        
         try {
             // Use JSZip library to create a zip file
             const zip = new JSZip();
             const mediaFolder = zip.folder(title.replace(/\s+/g, '-'));
-            
             // Add each media item to the zip
             const downloadPromises = mediaItems.map(async (url, index) => {
                 try {
                     const response = await fetch(url);
                     if (!response.ok) throw new Error(`Failed to fetch ${url}`);
                     const blob = await response.blob();
-                    
                     // Determine file extension
                     const isVideo = url.toLowerCase().endsWith('.mp4') || 
                                    url.toLowerCase().endsWith('.webm') || 
                                    url.toLowerCase().endsWith('.ogg');
                     const extension = isVideo ? '.mp4' : '.jpg';
-                    
                     mediaFolder.file(`${title.replace(/\s+/g, '-')}-${index + 1}${extension}`, blob);
                 } catch (error) {
                     console.error(`Error downloading ${url}:`, error);
                     // Skip this media item if there's an error
                 }
             });
-            
             await Promise.all(downloadPromises);
-            
             // Generate the zip file
             const content = await zip.generateAsync({ type: 'blob' });
-            
             // Create download link
             const zipUrl = URL.createObjectURL(content);
             const link = document.createElement('a');
@@ -544,7 +545,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            
             // Clean up
             URL.revokeObjectURL(zipUrl);
         } catch (error) {
@@ -555,29 +555,24 @@ document.addEventListener('DOMContentLoaded', function() {
             loading.remove();
         }
     });
-
     // Animate elements when they come into view
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.timeline-item, .suggestion-form, .day-title');
-        
         elements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
             const screenPosition = window.innerHeight / 1.3;
-            
             if (elementPosition < screenPosition) {
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
             }
         });
     };
-    
     // Set initial state for animated elements
     document.querySelectorAll('.timeline-item, .suggestion-form, .day-title').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'all 0.6s ease';
     });
-    
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll(); // Run once on load
 });
