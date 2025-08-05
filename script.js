@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             // Replace with your actual Telegram bot token and chat ID
             const botToken = '8472090032:AAH172QfDrXEHXYw-JPIOnMu5oBsiYobVOg';
-            const chatId = '-4866132216';
+            const chatId = '-4938077194';
             // Format the message
             const message = `*New Suggestion for ${dayName.replace('Day', 'Day ')}*
 Name: ${name}
