@@ -228,42 +228,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById(formId);
         const submitBtn = form.querySelector('.submit-btn');
         const btnText = submitBtn.querySelector('.btn-text');
-        
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
             // Get form values
             const name = document.getElementById(`name${dayName}`).value.trim();
             const destination = document.getElementById(`destination${dayName}`).value.trim();
             const travelTime = document.getElementById(`travelTime${dayName}`).value;
             const stayTime = document.getElementById(`stayTime${dayName}`).value;
             const notes = document.getElementById(`notes${dayName}`).value.trim();
-            
             if (!name || !destination) {
                 alert('Please fill in at least your name and destination');
                 return;
             }
-            
             // Replace with your actual Telegram bot token and chat ID
             const botToken = '8472090032:AAH172QfDrXEHXYw-JPIOnMu5oBsiYobVOg';
             const chatId = '-4866132216';
-            
             // Format the message
             const message = `*New Suggestion for ${dayName.replace('Day', 'Day ')}*
-        
 Name: ${name}
 Destination: ${destination}
 Travel Time: ${travelTime || 'Not specified'} minutes
 Stay Time: ${stayTime || 'Not specified'} minutes
 Notes: ${notes || 'None'}
-
 _Sent from Risaa Journey_`;
-            
             try {
                 // UI Feedback
                 btnText.textContent = 'Sending...';
                 submitBtn.style.background = 'linear-gradient(135deg, var(--sage), var(--lavender))';
-                
                 // Send to Telegram
                 const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                     method: 'POST',
@@ -276,14 +267,20 @@ _Sent from Risaa Journey_`;
                         parse_mode: 'Markdown'
                     })
                 });
-                
                 const data = await response.json();
-                
                 if (data.ok) {
                     // Success - show confetti and reset form
                     createConfetti();
                     form.reset();
                     btnText.textContent = 'Sent! ✓';
+                    
+                    // SweetAlert success message
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Your suggestion has been sent!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
                     
                     setTimeout(() => {
                         btnText.textContent = 'Send to Telegram';
@@ -295,10 +292,17 @@ _Sent from Risaa Journey_`;
                 console.error('Error sending to Telegram:', error);
                 alert('Failed to send suggestion. Please try again later.');
                 btnText.textContent = 'Send to Telegram';
+                
+                // SweetAlert error message
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to send suggestion. Please try again later.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         });
     };
-
     // Initialize all suggestion forms
     setupSuggestionForm('suggestionFormDay1', 'Day1');
     setupSuggestionForm('suggestionFormDay2', 'Day2');
