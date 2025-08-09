@@ -635,23 +635,71 @@ _Sent from Risaa Journey_`;
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll(); // Run once on load
 
-    // Welcome popup functionality
-const welcomePopup = document.getElementById('welcomePopup');
-const closeWelcome = document.getElementById('closeWelcome');
-
-// Show popup on page load
-welcomePopup.style.display = 'flex';
-
-// Close popup when clicking the X
-closeWelcome.addEventListener('click', () => {
-    welcomePopup.style.display = 'none';
-});
-
-// Close popup if clicking outside the content
-welcomePopup.addEventListener('click', (e) => {
-    if (e.target === welcomePopup) {
-        welcomePopup.style.display = 'none';
+   // Tampilkan popup saat halaman loaded
+    showWelcomePopup();
+    
+    // Function buat nampilin popup
+    function showWelcomePopup() {
+        const popup = document.getElementById('welcome-popup');
+        const mainContent = document.getElementById('main-content') || document.body;
+        
+        if (popup) {
+            // Tampilkan popup
+            popup.style.display = 'flex';
+            popup.style.opacity = '0';
+            popup.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                popup.style.opacity = '1';
+            }, 100);
+            
+            // Tambahkan class untuk blur background
+            document.body.classList.add('popup-active');
+            if (mainContent) {
+                mainContent.classList.add('blur-background');
+            }
+        }
     }
-});
-
+    
+    // Function buat nutup popup
+    function closeWelcomePopup() {
+        const popup = document.getElementById('welcome-popup');
+        const mainContent = document.getElementById('main-content') || document.body;
+        
+        if (popup) {
+            popup.style.opacity = '0';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+                // Remove blur effect
+                document.body.classList.remove('popup-active');
+                if (mainContent) {
+                    mainContent.classList.remove('blur-background');
+                }
+            }, 300);
+        }
+    }
+    
+    // Event listener buat close button
+    const closeBtn = document.querySelector('.close-popup');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeWelcomePopup);
+    }
+    
+    // Close popup kalo klik di luar area content
+    const popup = document.getElementById('welcome-popup');
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                closeWelcomePopup();
+            }
+        });
+    }
+    
+    // Close popup pake ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeWelcomePopup();
+        }
+    });
 });
