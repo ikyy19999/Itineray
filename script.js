@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         showInspectWarning();
     });
+    
     // Disable keyboard shortcuts for inspect
     document.addEventListener('keydown', function(e) {
         // Disable F12
@@ -633,4 +634,24 @@ _Sent from Risaa Journey_`;
     });
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll(); // Run once on load
+
+    // Welcome popup functionality
+const welcomePopup = document.getElementById('welcomePopup');
+const closeWelcome = document.getElementById('closeWelcome');
+
+// Show popup on page load
+welcomePopup.style.display = 'flex';
+
+// Close popup when clicking the X
+closeWelcome.addEventListener('click', () => {
+    welcomePopup.style.display = 'none';
+});
+
+// Close popup if clicking outside the content
+welcomePopup.addEventListener('click', (e) => {
+    if (e.target === welcomePopup) {
+        welcomePopup.style.display = 'none';
+    }
+});
+
 });
