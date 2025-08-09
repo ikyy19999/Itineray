@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         showInspectWarning();
     });
-    
     // Disable keyboard shortcuts for inspect
     document.addEventListener('keydown', function(e) {
         // Disable F12
