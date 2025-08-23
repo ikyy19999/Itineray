@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Disable right click, inspect element, etc.
-    // document.addEventListener('contextmenu', function(e) {
-    //     e.preventDefault();
-    //     showInspectWarning();
-    // });
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        showInspectWarning();
+    });
     // Disable keyboard shortcuts for inspect
     document.addEventListener('keydown', function(e) {
         // Disable F12
