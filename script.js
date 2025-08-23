@@ -38,17 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     // Function to show warning
-    function showInspectWarning() {
-        Swal.fire({
-            title: 'Restricted Access',
-            html: 'Contact the developer at <a href="mailto:support@rizkymaulana.web.id" style="color: #FFB7C5; text-decoration: underline;">this email</a> if you want to inspect.',
-            icon: 'warning',
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#FFB7C5',
-            background: document.body.classList.contains('dark-mode') ? '#2d2d2d' : 'white',
-            color: document.body.classList.contains('dark-mode') ? '#f0f0f0' : '#3D3B40'
-        });
-    }
+    // function showInspectWarning() {
+    //     Swal.fire({
+    //         title: 'Restricted Access',
+    //         html: 'Contact the developer at <a href="mailto:support@rizkymaulana.web.id" style="color: #FFB7C5; text-decoration: underline;">this email</a> if you want to inspect.',
+    //         icon: 'warning',
+    //         confirmButtonText: 'OK',
+    //         confirmButtonColor: '#FFB7C5',
+    //         background: document.body.classList.contains('dark-mode') ? '#2d2d2d' : 'white',
+    //         color: document.body.classList.contains('dark-mode') ? '#f0f0f0' : '#3D3B40'
+    //     });
+    // }
     // Juga tambahkan kode untuk mencegah drag and drop image
     document.addEventListener('dragstart', function(e) {
         if (e.target.tagName === 'IMG') {
